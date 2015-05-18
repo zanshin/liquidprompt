@@ -794,14 +794,14 @@ _lp_git_branch_color()
         local remote
         remote="$(\git config --get branch.${branch}.remote 2>/dev/null)"
 
-        local has_commit
-        local commit_ahead
-        local commit_behind
+        local has_commit=""
         if [[ -n "$remote" ]]; then
             local remote_branch
             remote_branch="$(\git config --get branch.${branch}.merge)"
             if [[ -n "$remote_branch" ]]; then
                 remote_branch=${remote_branch/refs\/heads/refs\/remotes\/$remote}
+                local commit_ahead
+                local commit_behind
                 commit_ahead="$(\git rev-list --count $remote_branch..HEAD 2>/dev/null)"
                 commit_behind="$(\git rev-list --count HEAD..$remote_branch 2>/dev/null)"
                 if [[ "$commit_ahead" -ne "0" && "$commit_behind" -ne "0" ]]; then
@@ -814,7 +814,7 @@ _lp_git_branch_color()
             fi
         fi
 
-        local ret
+        local ret=""
         local shortstat # only to check for uncommitted changes
         shortstat="$(LC_ALL=C \git diff --shortstat HEAD 2>/dev/null)"
 
