@@ -1661,7 +1661,7 @@ _lp_set_prompt()
             LP_VCS_TYPE="git"
             if [[ -n "$LP_VCS" ]]; then
                 # If this is a vcsh repository
-                if [[ -n "$VCSH_DIRECTORY" ]]; then
+                if [[ -n "${VCSH_DIRECTORY-}" ]]; then
                     LP_VCS_TYPE="git-vcsh"
                 fi
                 # If this is a git-svn repository
