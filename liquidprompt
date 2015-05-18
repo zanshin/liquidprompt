@@ -1721,7 +1721,7 @@ _lp_set_prompt()
         esac
     fi
 
-    if [[ -f "$LP_PS1_FILE" ]]; then
+    if [[ -f "${LP_PS1_FILE-}" ]]; then
         source "$LP_PS1_FILE"
     fi
 
