@@ -1626,7 +1626,7 @@ _lp_set_prompt()
     fi
 
     # Display the current software collections enabled, if available
-    if [[ "$LP_ENABLE_SCLS,$X_SCLS" = 1,?* ]]; then
+    if [[ "$LP_ENABLE_SCLS,${X_SCLS-}" = 1,?* ]]; then
         LP_SCLS=" [${LP_COLOR_VIRTUALENV}${X_SCLS%"${X_SCLS##*[![:space:]]}"}${NO_COL}]"
     else
         LP_SCLS=
