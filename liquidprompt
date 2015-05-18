@@ -1612,7 +1612,7 @@ _lp_set_prompt()
     _lp_sudo_check
 
     # in main prompt: no space
-    if [[ "$LP_ENABLE_PROXY,$http_proxy" = 1,?* ]]; then
+    if [[ "$LP_ENABLE_PROXY,${http_proxy-}" = 1,?* ]]; then
         LP_PROXY="$LP_COLOR_PROXY$LP_MARK_PROXY$NO_COL"
     else
         LP_PROXY=
