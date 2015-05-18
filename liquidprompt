@@ -705,7 +705,7 @@ _lp_jobcount_color()
 
     local m_stop="z"
     local m_run="&"
-    local ret
+    local ret=""
 
     if $_LP_ENABLE_DETACHED_SESSIONS; then
         local -i detached=0
