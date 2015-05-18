@@ -1053,14 +1053,14 @@ _lp_fossil_branch_color()
 
         if [[ "$branch" = "no-tag" ]]; then
             # Warning, your branch has no tag name !
-            branch="${LP_COLOR_COMMITS}$branch${NO_COL}$ret${LP_COLOR_COMMITS}$C2A${NO_COL}"
+            branch="${LP_COLOR_COMMITS}$branch${NO_COL}${ret-}${LP_COLOR_COMMITS}$C2A${NO_COL}"
         else
             if (( C2E == 0 )); then
                 # All is up-to-date
                 branch="${LP_COLOR_UP}$branch$C2A${NO_COL}"
             else
                 # There're some changes to commit
-                branch="${LP_COLOR_CHANGES}$branch${NO_COL}$ret${LP_COLOR_CHANGES}$C2A${NO_COL}"
+                branch="${LP_COLOR_CHANGES}$branch${NO_COL}${ret-}${LP_COLOR_CHANGES}$C2A${NO_COL}"
             fi
         fi
         echo "$branch"
