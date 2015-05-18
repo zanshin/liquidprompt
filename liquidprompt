@@ -417,7 +417,7 @@ command -v screen >/dev/null ; _lp_bool _LP_ENABLE_SCREEN $?
 command -v tmux >/dev/null   ; _lp_bool _LP_ENABLE_TMUX $?
 $_LP_ENABLE_SCREEN || $_LP_ENABLE_TMUX ; _lp_bool _LP_ENABLE_DETACHED_SESSIONS $?
 # Use standard path symbols inside Midnight Commander
-[[ -n "$MC_SID" ]] && LP_ENABLE_SHORTEN_PATH=0
+[[ -n "${MC_SID-}" ]] && LP_ENABLE_SHORTEN_PATH=0
 
 if [[ "$LP_ENABLE_RUNTIME" == 1 ]] && ! $_LP_SHELL_bash; then
     echo Unfortunately, runtime printing for zsh is not yet supported. Turn LP_ENABLE_RUNTIME off in your config to hide this message.
@@ -442,7 +442,7 @@ fi
 # will update an icon of the directory displayed in the title of the terminal
 # window.
 # See http://hints.macworld.com/article.php?story=20110722211753852
-if [[ "$TERM_PROGRAM" == Apple_Terminal ]] && command -v update_terminal_cwd >/dev/null; then
+if [[ "${TERM_PROGRAM-}" == Apple_Terminal ]] && command -v update_terminal_cwd >/dev/null; then
     _LP_TERM_UPDATE_DIR=update_terminal_cwd
     # Remove "update_terminal_cwd; " that has been add by Apple in /et/bashrc.
     # See issue #196
@@ -526,7 +526,7 @@ fi
 
 _lp_connection()
 {
-    if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]]; then
+    if [[ -n "${SSH_CLIENT-}${SSH2_CLIENT-}${SSH_TTY-}" ]]; then
         echo ssh
     else
         # TODO check on *BSD
@@ -1619,7 +1619,7 @@ _lp_set_prompt()
     fi
 
     # Display the current Python virtual environment, if available
-    if [[ "$LP_ENABLE_VIRTUALENV,$VIRTUAL_ENV" = 1,?* ]]; then
+    if [[ "$LP_ENABLE_VIRTUALENV,${VIRTUAL_ENV-}" = 1,?* ]]; then
         LP_VENV=" [${LP_COLOR_VIRTUALENV}${VIRTUAL_ENV##*/}${NO_COL}]"
     else
         LP_VENV=
