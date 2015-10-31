@@ -20,6 +20,8 @@
         - LP_HOSTNAME_ALWAYS=-1 to always hide the hostname (GitHub #406)
 	- Run duration of the last command (LP_ENABLE_RUNTIME) is now also
 	  supported on zsh (GitHub #404, #355)
+	- Mercurial:
+	    * Show count of commits in "draft" phase (GitHub #402)
 	Incompatible changes:
 	- Variables LP_SCREEN_TITLE_OPEN and LP_SCREEN_TITLE_CLOSE are now
           removed to simplify the code (GitHub #371)
